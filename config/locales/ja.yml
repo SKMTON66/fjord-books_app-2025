@@ -1,0 +1,24 @@
+ja:
+  books:
+    books: "本一覧"
+    show_this_book: "詳細を表示"
+    new_book: "本を新規追加"
+    editing_book: "本を編集中"
+    edit_this_book: "内容を編集"
+    back_to_books: "本一覧に戻る"
+    destroy_this_book: "本を消去"
+    create:
+      create_success: "本の追加に成功しました"
+    update:
+      update_success: "本の内容更新に成功しました"
+    destroy:
+      destroy_success: "本の削除に成功しました"
+  activerecord:
+    models:
+      book: "本"
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "メモ"
+        author: "著者"
+        picture: "画像"

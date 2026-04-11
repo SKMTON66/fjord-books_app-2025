@@ -2,19 +2,19 @@
 
 <% content_for :title, "Books" %>
 
-<h1>Books</h1>
+<h1><%= t('books.books') %></h1>
 
 <div id="books" class="index-items">
   <% @books.each do |book| %>
   <div class="index-item">
     <%= render book %>
     <p>
-      <%= link_to "Show this book", book %>
+      <%= link_to t('books.show_this_book'), book %>
     </p>
   </div>
   <% end %>
 </div>
 
 <nav class="page-nav">
-  <%= link_to "New book", new_book_path %>
+  <%= link_to t('books.new_book'), new_book_path %>
 </nav>
