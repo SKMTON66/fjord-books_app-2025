@@ -3,13 +3,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
-  around_action :switch_locale
-
-  def switch_locale(&action)
-    locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &action)
-  end
-
   # GET /books or /books.json
   def index
     @books = Book.all
@@ -32,7 +25,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: t('.create_success') }
+        format.html { redirect_to @book, notice: t('common.controller.create.success', model: Book.model_name.human) }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +38,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: t('.update_success') }
+        format.html { redirect_to @book, notice: t('common.controller.update.success', model: Book.model_name.human) }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +52,7 @@ class BooksController < ApplicationController
     @book.destroy!
 
     respond_to do |format|
-      format.html { redirect_to books_path, status: :see_other, notice: t('.destroy_success') }
+      format.html { redirect_to books_path, status: :see_other, notice: t('common.controller.destroy.success', model: Book.model_name.human) }
       format.json { head :no_content }
     end
   end

@@ -1,21 +1,30 @@
 en:
-  books:
-    books: "books"
-    show_this_book: "show_this_book"
-    new_book: "new_book"
-    editing_book: "editing_book"
-    edit_this_book: "edit_this_book"
-    back_to_books: "back_to_books"
-    destroy_this_book: "destroy_this_book"
-    create:
-      create_success: "Book was successfully created."
-    update:
-      update_success: "Book was successfully updated."
-    destroy:
-      destroy_success: "Book was successfully destroyed."
+  common:
+    index:
+      title: "%{model}"
+    edit:
+      title: "Editing %{model}"
+    new:
+      title: "New %{model}"
+    button:
+      new: "add_new"
+      back: "back_to_%{model}"
+      show: "show_this_%{model}"
+      edit: "edit_this_%{model}"
+      destroy: "destroy_this_%{model}"
+    controller:
+      create:
+        success: "%{model} was successfully created."
+      update:
+        success: "%{model} was successfully updated."
+      destroy:
+        success: "%{model} was successfully destroyed."
+
   activerecord:
     models:
-      book: "book"
+      book:
+        one: "book"
+        other: "books"
     attributes:
       book:
         title: "title"
