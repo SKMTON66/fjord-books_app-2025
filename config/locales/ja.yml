@@ -1,18 +1,20 @@
 ja:
-  common:
-    index:
-      title: "%{model}一覧"
-    edit:
-      title: "%{model}を編集中"
-    new:
-      title: "%{model}を新規追加"
-    button:
-      new: "新規追加"
-      back: "%{model}一覧に戻る"
-      show: "%{model}の詳細"
-      edit: "%{model}の編集"
-      destroy: "%{model}の削除"
-    controller:
+  view:
+    common:
+      index:
+        title: "%{model}一覧"
+      edit:
+        title: "%{model}を編集中"
+      new:
+        title: "%{model}を新規追加"
+      button:
+        new: "新規追加"
+        back: "%{model}一覧に戻る"
+        show: "%{model}の詳細"
+        edit: "%{model}の編集"
+        destroy: "%{model}の削除"
+  controller:
+    common:
       create:
         success: "%{model}の追加に成功しました"
       update:

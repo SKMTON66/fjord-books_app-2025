@@ -1,18 +1,20 @@
 en:
-  common:
-    index:
-      title: "%{model}"
-    edit:
-      title: "Editing %{model}"
-    new:
-      title: "New %{model}"
-    button:
-      new: "add_new"
-      back: "back_to_%{model}"
-      show: "show_this_%{model}"
-      edit: "edit_this_%{model}"
-      destroy: "destroy_this_%{model}"
-    controller:
+  view:
+    common:
+      index:
+        title: "%{model}"
+      edit:
+        title: "Editing %{model}"
+      new:
+        title: "New %{model}"
+      button:
+        new: "add new"
+        back: "back to %{model}"
+        show: "show this %{model}"
+        edit: "edit this %{model}"
+        destroy: "destroy this %{model}"
+  controller:
+    common:
       create:
         success: "%{model} was successfully created."
       update:
