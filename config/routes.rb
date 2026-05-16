@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root to: "books#index"
   devise_for :users
   resources :users
-  root to: "books#index"
   resources :books
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
