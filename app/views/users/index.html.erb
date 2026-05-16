@@ -5,10 +5,13 @@
 <div id="users">
   <% @users.each do |user| %>
     <%= user.username %>
+    <%= user.email %>
     <p>
       <%= link_to "Show this user", user %>
     </p>
   <% end %>
 </div>
+
+<%= paginate @users %>
 
 <%= link_to "books", books_path %>
