@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username postcode address self_introduction])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username postcode address self_introduction])
   end
 end

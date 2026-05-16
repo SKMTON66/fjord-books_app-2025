@@ -1,0 +1,8 @@
+<%= render @user %>
+
+<div>
+  <% if current_user == @user %>
+  <%= link_to "Edit this user", edit_user_registration_path %> <br>
+  <% end %>
+  <%= link_to "Back to users", users_path %>
+</div>
