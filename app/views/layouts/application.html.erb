@@ -25,6 +25,13 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <% if user_signed_in? %>
+    <li>
+      <%= "現在#{current_user.username}でログイン中" %> <br>
+      <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %>
+    </li>
+  <% end %>
+
   <body class="<%= params[:action] %>">
     <%= yield %>
   </body>
