@@ -1,8 +1,11 @@
-<%= render @user %>
-
-<div>
-  <% if current_user == @user %>
-  <%= link_to "Edit this user", edit_user_registration_path %> <br>
-  <% end %>
-  <%= link_to "Back to users", users_path %>
+<div class="show-item">
+  <%= render @user %>
 </div>
+
+<nav class="page-nav">
+  <% if current_user == @user %>
+  <%= link_to t('views.common.edit', name: User.model_name.human.downcase), edit_user_registration_path %> <br>
+  <% end %>
+
+  <%= link_to t('views.common.back', name: i18n_pluralize(User.model_name.human.downcase)), users_path %>
+</nav>

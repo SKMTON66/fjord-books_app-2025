@@ -183,6 +183,24 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   views:
+    users:
+      logging_in: "現在『%{name} %{email}』でログイン中"
+      logout: "ログアウト"
+      login: "ログイン"
+      signup: "サインアップ"
+      new_password: "新しいパスワード"
+      confirm_new_password: "新しいパスワード(確認用)"
+      change_your_password: "パスワードの変更"
+      change_my_password: "パスワードを変更する"
+      characters_minimum: "文字以上"
+      forgot_your_password?: "パスワードを忘れましたか？"
+      send_reset_link: "リセットリンクを送信"
+      keep_current_if_blank: "変更しない場合は空欄"
+      current_password_required: "現在のパスワードが必要です"
+      back: "戻る"
+      require: "必須"
+      warning: "本当によろしいですか？"
+
     common:
       show: "この%{name}を表示"
       edit: "この%{name}を編集"

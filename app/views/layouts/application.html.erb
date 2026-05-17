@@ -27,8 +27,8 @@
 
   <% if user_signed_in? %>
     <div>
-      <%= "現在『#{current_user.username} #{current_user.email}』でログイン中" %> <br>
-      <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %>
+      <%= t('views.users.logging_in', name: current_user.username, email: current_user.email) %> <br>
+      <%= link_to t('views.users.logout'), destroy_user_session_path, data: { turbo_method: :delete } %>
     </div>
   <% end %>
 
