@@ -3,12 +3,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
 
-  # GET /users or /users.json
+  # GET /users
   def index
     @users = User.order(created_at: :desc).page(params[:page]).per(5)
   end
 
-  # GET /users/1 or /users/1.json
+  # GET /users/:id
   def show; end
 
   private
