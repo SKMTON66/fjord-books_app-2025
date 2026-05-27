@@ -22,6 +22,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <% if user_signed_in? %>
+    <div>
+      <%= t('views.users.logging_in', name: current_user.username, email: current_user.email) %> <br>
+      <%= link_to t('views.users.logout'), destroy_user_session_path, data: { turbo_method: :delete } %>
+    </div>
+  <% end %>
+
   <body class="<%= params[:action] %>">
     <%= yield %>
   </body>

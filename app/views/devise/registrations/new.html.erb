@@ -1,0 +1,49 @@
+<h2><%= t('views.users.signup') %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <p><%= f.label :username %></p>
+    <p><%= f.text_field :username, autofocus: true, placeholder: t('views.users.require') %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :email %></p>
+    <p><%= f.email_field :email, autocomplete: "email", placeholder: t('views.users.require') %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :password %></p>
+    <% if @minimum_password_length %>
+      <p><em>(<%= @minimum_password_length %> <%= t('views.users.characters_minimum') %>)</em></p>
+    <% end %>
+    <p><%= f.password_field :password, autocomplete: "new-password", placeholder: t('views.users.require') %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :password_confirmation %></p>
+    <p><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: t('views.users.require') %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :postcode %></p>
+    <p><%= f.text_field :postcode %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :address %></p>
+    <p><%= f.text_field :address %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :self_introduction %></p>
+    <p><%= f.text_area :self_introduction %></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('views.users.signup') %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

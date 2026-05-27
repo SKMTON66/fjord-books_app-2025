@@ -1,0 +1,60 @@
+<h2><%= t('views.common.edit', name: User.model_name.human.downcase) %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <p><%= f.label :username %></p>
+    <p><%= f.text_field :username, autofocus: true %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :email %></p>
+    <p><%= f.email_field :email, autocomplete: "email" %></p>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <p><%= f.label :password %> <i>(<%= t('views.users.keep_current_if_blank') %>)</i></p>
+    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
+    <% if @minimum_password_length %>
+      <p><em><%= @minimum_password_length %> <%= t('views.users.characters_minimum') %></em></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :password_confirmation %></p>
+    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :current_password %> <i>(<%= t('views.users.current_password_required') %>)</i></p>
+    <p><%= f.password_field :current_password, autocomplete: "current-password", placeholder: t('views.users.require') %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :postcode %></p>
+    <p><%= f.text_field :postcode %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :address %></p>
+    <p><%= f.text_field :address %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :self_introduction %></p>
+    <p><%= f.text_area :self_introduction %></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('helpers.submit.update') %>
+  </div>
+<% end %>
+
+<div><%= button_to t('views.common.destroy', name: User.model_name.human.downcase), registration_path(resource_name), data: { confirm: t('views.users.warning'), turbo_confirm: t('views.users.warning') }, method: :delete %></div>
+
+<%= link_to t('views.users.back'), :back %>
