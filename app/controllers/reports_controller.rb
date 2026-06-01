@@ -2,14 +2,24 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :check_permission, only: %i[edit update destroy]
 
-  # GET /reports or /reports.json
+  # GET /reports
   def index
-    @reports = Report.all
+    @reports = Report.includes(:user).all
   end
 
-  # GET /reports/1 or /reports/1.json
-  def show; end
+  # GET /reports/1
+  def show
+    user = @report.user
+
+    @name_or_email =
+      if user.nil?
+        t('controllers.report.deleted_user')
+      else
+        user.name.presence || user.email
+      end
+  end
 
   # GET /reports/new
   def new
@@ -19,9 +29,10 @@ class ReportsController < ApplicationController
   # GET /reports/1/edit
   def edit; end
 
-  # POST /reports or /reports.json
+  # POST /reports
   def create
     @report = Report.new(report_params)
+    @report.user_id = current_user.id
 
     respond_to do |format|
       if @report.save
@@ -34,7 +45,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reports/1 or /reports/1.json
+  # PATCH/PUT /reports/1
   def update
     respond_to do |format|
       if @report.update(report_params)
@@ -47,7 +58,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  # DELETE /reports/1 or /reports/1.json
+  # DELETE /reports/1
   def destroy
     @report.destroy!
 
@@ -67,5 +78,11 @@ class ReportsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def report_params
     params.expect(report: %i[title content])
+  end
+
+  def check_permission
+    return if @report.user_id == current_user.id
+
+    redirect_to report_path(@report), alert: t('controllers.common.alert_no_permission', name: Report.model_name.human)
   end
 end

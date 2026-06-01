@@ -1,9 +1,19 @@
 <h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
 <%= render @report %>
 
+  <p>
+    <strong><%= t('views.common.post_date') %>:</strong>
+    <%= @report.created_at %>
+  </p>
+
+  <p>
+    <strong><%= t('views.common.name_or_email') %>:</strong>
+    <%= @name_or_email %>
+  </p>
+
 <div>
-  <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
+  <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) if @report.user_id == current_user.id %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
 
-  <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
+  <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete if @report.user_id == current_user.id %>
 </div>
