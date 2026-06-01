@@ -3,7 +3,7 @@
 
   <p>
     <strong><%= t('views.common.post_date') %>:</strong>
-    <%= @report.created_at %>
+    <%= l @report.created_at, format: :long %>
   </p>
 
   <p>
