@@ -3,4 +3,5 @@
 class Report < ApplicationRecord
   belongs_to :user, optional: true
   validates :title, presence: true
+  has_many :comments, as: :commentable, dependent: :destroy
 end

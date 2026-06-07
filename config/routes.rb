@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root to: 'books#index'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  resources :reports
   devise_for :users
-  resources :books
+  resources :books, :reports
   resources :users, only: %i(index show)
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

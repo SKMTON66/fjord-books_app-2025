@@ -12,7 +12,6 @@ class ReportsController < ApplicationController
   # GET /reports/1
   def show
     user = @report.user
-
     @name_or_email =
       if user.nil?
         t('controllers.report.deleted_user')
