@@ -198,7 +198,9 @@ ja:
       title_show: "%{name}の詳細"
       sign_out: ログアウト
       post_date: "投稿日時"
+      new_post: "%{name}を投稿する"
       name_or_email: "ユーザ名またはメールアドレス"
+      not_found: "%{name}は見つかりません"
     pagination:
       first: '« 最初'
       last: '最後 »'
@@ -211,7 +213,6 @@ ja:
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
       alert_no_permission: "他人の%{name}は編集・削除できません"
-    report:
       deleted_user: "退会したユーザーです"
   layouts:
     application:
