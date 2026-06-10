@@ -1,15 +1,11 @@
 <h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
-<%= render @report %>
 
-  <p>
-    <strong><%= t('views.common.post_date') %>:</strong>
-    <%= l @report.created_at, format: :long %>
-  </p>
+<div class="show-item">
+  <%= render @report, report: @report, name_or_email: @name_or_email %>
+</div>
 
-  <p>
-    <strong><%= t('views.common.name_or_email') %>:</strong>
-    <%= @name_or_email %>
-  </p>
+  <%= render "comments/index", comments: @comments %>
+  <%= render "comments/form", commentable: @report %>
 
 <div>
   <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) if @report.user_id == current_user.id %> |

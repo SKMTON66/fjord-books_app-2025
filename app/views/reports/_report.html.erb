@@ -1,4 +1,15 @@
 <div id="<%= dom_id report %>">
+
+  <p>
+    <strong><%= t('views.common.name_or_email') %>:</strong>
+    <%= name_or_email %>
+  </p>
+
+  <p>
+    <strong><%= t('views.common.post_date') %>:</strong>
+    <%= l report.created_at, format: :long %>
+  </p>
+
   <p>
     <strong><%= Report.human_attribute_name(:title) %>:</strong>
     <%= report.title %>
