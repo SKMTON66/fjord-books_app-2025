@@ -1,12 +1,7 @@
 <div id="<%= dom_id comment %>">
-
   <p>
     <strong><%= t('views.common.name_or_email') %>:</strong>
-    <% if comment.user.nil? %>
-      <%= t('controllers.common.deleted_user') %>
-    <% else %>
-      <%= comment.user.name.presence || comment.user.email %>
-    <% end %>
+    <%= display_name(comment.user) %>
   </p>
 
   <p>

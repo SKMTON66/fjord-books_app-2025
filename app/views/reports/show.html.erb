@@ -1,7 +1,7 @@
 <h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
 
 <div class="show-item">
-  <%= render @report, report: @report, name_or_email: @name_or_email %>
+  <%= render @report %>
 </div>
 
   <%= render "comments/index", comments: @comments %>

@@ -11,13 +11,6 @@ class ReportsController < ApplicationController
 
   # GET /reports/1
   def show
-    user = @report.user
-    @name_or_email =
-      if user.nil?
-        t('controllers.common.deleted_user')
-      else
-        user.name.presence || user.email
-      end
     @comments = @report.comments.includes(:user)
   end
 

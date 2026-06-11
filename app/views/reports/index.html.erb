@@ -6,6 +6,7 @@
 <div id="reports" class="index-items">
   <% @reports.each do |report| %>
     <div class="index-item">
+      <%= Report.human_attribute_name(:title) %>:
       <%= report.title %>
       <p>
         <%= link_to t('views.common.show', name: Report.model_name.human.downcase), report %>
