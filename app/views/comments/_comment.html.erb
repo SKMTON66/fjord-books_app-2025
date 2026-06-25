@@ -1,0 +1,19 @@
+<div id="<%= dom_id comment %>">
+
+  <p>
+    <strong><%= t('views.common.name_or_email') %>:</strong>
+    <%= comment.user ? comment.user.display_name : t('helpers.common.deleted_user') %>
+  </p>
+
+  <p>
+    <strong><%= t('views.common.post_date') %>:</strong>
+    <%= l comment.created_at, format: :long %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:content) %>:</strong>
+    <%= comment.content %>
+  </p>
+
+   <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), comment, method: :delete if comment.user_id == current_user.id %>
+</div>
