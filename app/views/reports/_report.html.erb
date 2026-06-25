@@ -2,7 +2,7 @@
 
   <p>
     <strong><%= t('views.common.name_or_email') %>:</strong>
-    <%= display_name(report.user) %>
+    <%= report.user ? report.user.display_name : t('helpers.common.deleted_user') %>
   </p>
 
   <p>
