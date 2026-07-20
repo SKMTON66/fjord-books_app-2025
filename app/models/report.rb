@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
+  after_commit :update_mentions, on: %i[create update]
+
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
 
@@ -33,5 +35,19 @@ class Report < ApplicationRecord
 
   def created_on
     created_at.to_date
+  end
+
+  private
+
+  def mentioned_report_ids
+    content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
+  end
+
+  def update_mentions
+    active_report_mentions.destroy_all
+
+    mentioned_report_ids.each do |report_id|
+      active_report_mentions.create(mentioned_report_id: report_id)
+    end
   end
 end
