@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  after_commit :update_mentions, on: %i[create update]
+  after_save :update_mentions
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
@@ -47,7 +47,7 @@ class Report < ApplicationRecord
     active_report_mentions.destroy_all
 
     mentioned_report_ids.each do |report_id|
-      active_report_mentions.create(mentioned_report_id: report_id)
+      active_report_mentions.create!(mentioned_report_id: report_id)
     end
   end
 end
