@@ -10,7 +10,7 @@
   <h3><%= t('application.reports.mentioning_reports') %></h3>
 
   <ul>
-    <% @report.mentioned_reports.each do |report| %>
+    <% @report.mentioned_reports.order(created_at: :desc).each do |report| %>
       <li>
         <%= link_to report.title, report_path(report) %>
       </li>
