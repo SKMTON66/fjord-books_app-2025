@@ -40,17 +40,14 @@ class Report < ApplicationRecord
   private
 
   def mentioned_report_ids
-    content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i).uniq
+    content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i).uniq - [id]
   end
 
   def update_mentions
     active_report_mentions.destroy_all
 
-    mentioned_report_ids.each do |report_id|
-      next unless Report.exists?(report_id)
-      next if report_id == id
-
-      active_report_mentions.create!(mentioned_report_id: report_id)
+    Report.where(id: mentioned_report_ids).find_each do |mentioned_report|
+      active_report_mentions.create!(mentioned_report_id: mentioned_report.id)
     end
   end
 end
