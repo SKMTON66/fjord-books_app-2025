@@ -15,3 +15,7 @@ john_doe:
 bob:
   email: 'Bob@example.com'
   name: 'Bob'
+
+charlie:
+  email: 'charlie@example.com'
+  name: 'Charlie'

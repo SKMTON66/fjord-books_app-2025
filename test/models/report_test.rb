@@ -33,6 +33,26 @@ class ReportTest < ActiveSupport::TestCase
 
     assert_equal [mentioned_report1.id, mentioned_report2.id].sort, report.mentioning_report_ids.sort
   end
+
+  test '日報を更新した際に言及内容も更新される' do
+    report = reports(:alice_report)
+    mentioned_report1 = reports(:bob_report)
+    mentioned_report2 = reports(:john_doe_report)
+    new_report = reports(:charlie_report)
+    report.update!(content: <<~CONTENT
+      http://localhost:3000/reports/#{mentioned_report1.id}
+      http://localhost:3000/reports/#{mentioned_report2.id}
+    CONTENT
+                  )
+
+    report.update!(content: <<~CONTENT
+      http://localhost:3000/reports/#{mentioned_report1.id}
+      http://localhost:3000/reports/#{new_report.id}
+    CONTENT
+                  )
+
+    assert_equal [mentioned_report1.id, new_report.id].sort, report.reload.mentioning_report_ids.sort
+  end
   test '言及が重複しても1件のみ保存される' do
     report = reports(:alice_report)
     mentioned_report = reports(:bob_report)

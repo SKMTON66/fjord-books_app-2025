@@ -10,6 +10,11 @@ bob_report:
   title: 'foo'
   content: 'baz'
 
+charlie_report:
+  user: charlie
+  title: 'apple'
+  content: 'dog'
+
 john_doe_report:
   user: john_doe
   title: 'fizz'
