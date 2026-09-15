@@ -1,0 +1,11 @@
+<div id="comments" class="index-items">
+  <% if comments.any? %>
+    <% comments.each do |comment| %>
+      <div class="index-item">
+        <%= render comment %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= t('views.common.not_found', name: Comment.model_name.human) %>
+  <% end %>
+</div>

@@ -115,6 +115,8 @@ ja:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    common:
+      deleted_user: "退会したユーザーです"
     select:
       prompt: 選択してください
     submit:
@@ -197,6 +199,10 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+      post_date: "投稿日時"
+      new_post: "%{name}を投稿する"
+      name_or_email: "ユーザ名またはメールアドレス"
+      not_found: "%{name}は見つかりません"
     pagination:
       first: '« 最初'
       last: '最後 »'
@@ -208,6 +214,8 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      alert_no_permission: "他人の%{name}は編集・削除できません"
+      alert_required: "%{name}は入力が必須です"
   layouts:
     application:
       menu: メニュー
